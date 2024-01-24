@@ -6,8 +6,15 @@ export default {
   tags: ["autodocs"],
 };
 
-export const Basic = {
+export const BasicInput = {
   args: {
     label: "Example",
+  },
+};
+
+export const BasicTextarea = {
+  args: {
+    label: "Example",
+    type: 'textarea'
   },
 };

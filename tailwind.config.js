@@ -4,7 +4,11 @@ export default {
     "./src/**/*.tsx"
   ],
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'text-and-margin': 'font-size, margin'
+      }
+    },
   },
   plugins: [],
 }
