@@ -14,11 +14,12 @@ const Input = forwardRef(function Input(
     type,
     label,
     labelProps,
+    className,
     onChange,
     ...props
-  }: Omit<InputHTMLAttributes<HTMLInputElement>, "className"> & {
+  }: InputHTMLAttributes<HTMLInputElement> & {
     label: LabelHTMLAttributes<HTMLLabelElement>["children"];
-    labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
+    labelProps?: Omit<LabelHTMLAttributes<HTMLLabelElement>, 'className'>;
     type?: "input" | "textarea";
   },
   forwardRef: ForwardedRef<HTMLInputElement>
@@ -32,16 +33,16 @@ const Input = forwardRef(function Input(
 
   return (
     <label
-      className="border border-t-0 rounded px-2 py-1 relative inline-block"
+      className={classNames(
+        "border border-t-0 rounded px-2 pb-1 relative inline-block",
+        className
+      )}
       {...labelProps}
     >
       {createElement(type || "input", {
         onChange: handleInput,
         ref: forwardRef,
-        className: classNames(
-          "outline-none peer overflow-auto",
-          labelProps?.className
-        ),
+        className: "outline-none peer overflow-auto",
         ...props,
       })}
       <span
