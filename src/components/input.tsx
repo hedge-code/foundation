@@ -1,13 +1,15 @@
 "use client";
 
-import classNames from "classnames";
+import classNames from 'classnames';
+import React, { createElement, forwardRef, useState } from 'react';
+
 import type {
   ChangeEventHandler,
   ForwardedRef,
+  HTMLInputTypeAttribute,
   InputHTMLAttributes,
   LabelHTMLAttributes,
 } from "react";
-import React, { createElement, forwardRef, useState } from "react";
 
 const Input = forwardRef(function Input(
   {
@@ -21,36 +23,39 @@ const Input = forwardRef(function Input(
   }: InputHTMLAttributes<HTMLInputElement> & {
     label: LabelHTMLAttributes<HTMLLabelElement>["children"];
     labelProps?: Omit<LabelHTMLAttributes<HTMLLabelElement>, "className">;
-    type?: "input" | "textarea";
+    type?: HTMLInputTypeAttribute | "textarea";
   },
   forwardRef: ForwardedRef<HTMLInputElement>
 ) {
-  const [filled, setFilled] = useState<string>((value as string) || "");
+  const [filled, setFilled] = useState<number>(
+    ((value as string) || "").length
+  );
 
   const handleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
     if (onChange) onChange(e);
-    setFilled(e.target.value);
+    setFilled(e.target.value.length);
   };
 
   return (
     <label
       className={classNames(
-        "border border-t-0 rounded px-2 py-1 relative inline-block",
+        "rounded px-2 py-1 relative inline-block",
         className
       )}
       {...labelProps}
     >
-      {createElement(type || "input", {
+      {createElement(type === "textarea" ? "textarea" : "input", {
         onChange: handleInput,
         ref: forwardRef,
         value,
-        className: "outline-none peer overflow-auto",
+        className: "outline-none peer overflow-auto w-full",
+        type: type !== "textarea" && type,
         ...props,
       })}
       <span
         className={classNames(
-          "peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded peer-focus-within:after:border-t after:flex-grow after:rounded pointer-events-none",
-          filled.length &&
+          "border peer-focus-within:border-blue-500/50 peer-focus-within:before:border-inherit peer-focus-within:after:border-inherit peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded peer-focus-within:after:border-t after:flex-grow after:rounded pointer-events-none",
+          filled &&
             "[&>span]:-mt-4 text-sm border-t-0 before:border-t after:border-t"
         )}
       >
