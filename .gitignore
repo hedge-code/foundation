@@ -17,4 +17,4 @@
 /blob-report/
 /playwright/.cache/
 /playwright-screens
-/.yarn
+/.yarn/install-state.gz
