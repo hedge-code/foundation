@@ -1,39 +1,42 @@
 "use client";
 
 import classNames from 'classnames';
-import { createElement, forwardRef, useState } from 'react';
+import { createElement, forwardRef, useImperativeHandle, useRef, useState } from 'react';
 
 import type {
   ChangeEventHandler,
-  ForwardedRef,
   HTMLInputTypeAttribute,
   InputHTMLAttributes,
   LabelHTMLAttributes,
 } from "react";
 
-const Input = forwardRef(function Input(
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: LabelHTMLAttributes<HTMLLabelElement>["children"];
+  labelProps?: Omit<LabelHTMLAttributes<HTMLLabelElement>, "className">;
+  type?: HTMLInputTypeAttribute | "textarea";
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
-    value,
     type,
     label,
     labelProps,
     className,
     onChange,
     ...props
-  }: InputHTMLAttributes<HTMLInputElement> & {
-    label: LabelHTMLAttributes<HTMLLabelElement>["children"];
-    labelProps?: Omit<LabelHTMLAttributes<HTMLLabelElement>, "className">;
-    type?: HTMLInputTypeAttribute | "textarea";
   },
-  forwardRef: ForwardedRef<HTMLInputElement>
+  forwardRef
 ) {
-  const [filled, setFilled] = useState<number>(
-    ((value as string) || "").length
+  const ref = useRef<HTMLInputElement>(null);
+
+  useImperativeHandle(forwardRef, () => ref.current!, [])
+  const [filled, setFilled] = useState<boolean>(
+    ref.current && ref.current.value != "" || false
   );
 
   const handleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
     if (onChange) onChange(e);
-    setFilled(e.target.value.length);
+    setFilled(ref.current && ref.current.value != "" || false);
   };
 
   return (
@@ -47,7 +50,6 @@ const Input = forwardRef(function Input(
       {createElement(type === "textarea" ? "textarea" : "input", {
         onChange: handleInput,
         ref: forwardRef,
-        value,
         className: "outline-none peer overflow-auto w-full",
         type: type !== "textarea" && type,
         ...props,
