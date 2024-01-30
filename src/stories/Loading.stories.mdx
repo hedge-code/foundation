@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs';
+import { LoadingIcon } from "../components";
+import classNames from 'classnames'
+
+export const Template = ({className}) => {
+  return <div className={classNames('h-16', className)}><LoadingIcon /></div>
+}
+
+<Meta title="Foundation/Loading" component={LoadingIcon}/>
+
+# Loading Icon
+
+Fully responsive.
+
+<Canvas>
+  <Story name='Basic'>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+Color inherited from text.
+
+<Canvas>
+  <Story name='Red' args={{className: "text-red-500"}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import React, { SVGProps } from "react";
+import { SVGProps } from "react";
 
-const Loading = (
+const LoadingIcon = (
   {className, ...props}: Omit<
     SVGProps<SVGSVGElement>,
-    "fill" | " viewBox" | "xmlns" | "version"
+    "fill" | " viewBox" | "xmlns"
   >
 ) => {
   const values = "0 0;0 8;0 0;0 -8;0 0";
@@ -23,7 +23,6 @@ const Loading = (
   );
   return (
     <svg
-      version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       viewBox="0 0 100 100"
@@ -37,4 +36,4 @@ const Loading = (
   );
 };
 
-export default Loading;
+export default LoadingIcon;

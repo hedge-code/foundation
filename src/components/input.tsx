@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from 'classnames';
-import React, { createElement, forwardRef, useState } from 'react';
+import { createElement, forwardRef, useState } from 'react';
 
 import type {
   ChangeEventHandler,

@@ -10,7 +10,7 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "Node",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "rootDir": "./src",
     "baseUrl": "./",
     "allowJs": true
