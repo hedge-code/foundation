@@ -59,7 +59,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
       <div className="flex items-center">
         <select
           className={classNames(
-            "outline-none peer overflow-auto w-full bg-transparent z-10 transition-all",
+            "outline-none peer overflow-auto w-full bg-transparent z-10 transition-opacity",
             isLoading && "pl-7"
           )}
           onChange={handleInput}
@@ -72,13 +72,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
         </select>
         <LoadingIcon
           className={classNames(
-            "w-7 absolute z-0 transition-all duration-500",
+            "w-7 absolute z-0 transition-opacity duration-500",
             !isLoading && "scale-x-0 opacity-0"
           )}
         />
         <span
           className={classNames(
-            "border peer-focus-within:border-current peer-focus-within:before:border-current peer-focus-within:after:border-current peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded peer-focus-within:after:border-t after:flex-grow after:rounded pointer-events-none",
+            "border peer-focus-within:border-current peer-focus-within:before:border-current peer-focus-within:after:border-current peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded-l peer-focus-within:after:border-t after:flex-grow after:rounded-r pointer-events-none",
             isError &&
               "border-current before:border-t-current after:border-t-current",
             filled &&
