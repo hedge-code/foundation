@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, ChangeEvent } from "react";
+import type { FC, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 
 interface AutocompleteMultiSelectProps {
   suggestions: string[];
 }
 
-const AutocompleteMultiSelect: React.FC<AutocompleteMultiSelectProps> = (
-  props
-) => {
+const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = (props) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>(props.suggestions);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -37,7 +36,7 @@ const AutocompleteMultiSelect: React.FC<AutocompleteMultiSelectProps> = (
       <div>
         {selectedItems.map((item, index) => (
           <span key={index} className="selected-item">
-            {item}{" "}
+            {item}
             <button onClick={() => handleRemoveItem(item)}>&times;</button>
           </span>
         ))}
@@ -50,8 +49,10 @@ const AutocompleteMultiSelect: React.FC<AutocompleteMultiSelectProps> = (
       />
       <ul>
         {suggestions.map((suggestion, index) => (
-          <li key={index} onClick={() => handleSelectSuggestion(suggestion)}>
-            {suggestion}
+          <li key={index}>
+            <button onClick={() => handleSelectSuggestion(suggestion)}>
+              {suggestion}
+            </button>
           </li>
         ))}
       </ul>

@@ -20,11 +20,18 @@ module.exports = {
       },
     },
   ],
-  parser: "@swc-node/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
   plugins: ["@typescript-eslint", "react"],
-  rules: {},
+  rules: {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+  },
+  settings: {
+    react: {
+      version: "^18.2.0",
+    },
+  },
 };
