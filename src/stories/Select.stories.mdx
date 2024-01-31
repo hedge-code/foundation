@@ -1,10 +1,21 @@
 import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs';
 import { Select } from "../components";
 
-export const Template = ({label, value, isLoading, isError}) => {
-  return <Select label={label} value={value} isLoading={isLoading} isError={isError}>
-      <option value='op1'>Option First</option>
-      <option value="op2">Option Secound</option>
+export const Template = ({label, value, isLoading, isError, multiple, size, disabled}) => {
+  return <Select label={label} value={value} isLoading={isLoading} isError={isError} multiple={multiple} size={size} disabled={disabled}>
+      <option value='op1'>First Option</option>
+      <option value="op2">Secound Option</option>
+      <option value="op3">Third Option</option>
+    </Select>
+}
+
+export const TemplateMoreOptions = ({label, value, isLoading, isError, multiple, size, disabled}) => {
+  return <Select label={label} value={value} isLoading={isLoading} isError={isError} multiple={multiple} size={size} disabled={disabled}>
+      <option value='op1'>First Option</option>
+      <option value="op2">Secound Option</option>
+      <option value="op3">Third Option</option>
+      <option value="op4">Fourth Option</option>
+      <option value="op4">Fifth Option</option>
     </Select>
 }
 
@@ -20,11 +31,17 @@ export const Template = ({label, value, isLoading, isError}) => {
     },
     isError: {
       control: 'boolean'
+    },
+    multiple: {
+      control: 'boolean'
     }
   }} args={{
     label: 'Example',
     isLoading: false,
-    isError: false
+    isError: false,
+    multiple: false,
+    disabled: false,
+    size: 0
   }}
 />
 
@@ -32,13 +49,29 @@ export const Template = ({label, value, isLoading, isError}) => {
 
 Let users select one option from a dropdown list.
 
-<Canvas>
+<Canvas withToolbar>
   <Story name='Basic'>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <Controls />
+
+### __Allows to select multiple values__
+
+<Canvas>
+  <Story name="multiple" args={{multiple: true}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### __Allows to select multiple with more values__
+
+<Canvas>
+  <Story name="multiple more options" args={{multiple: true}}>
+    {TemplateMoreOptions.bind({})}
+  </Story>
+</Canvas>
 
 ### __Has an init value__
 
