@@ -1,5 +1,12 @@
 {
-  "name": "foundation",
+  "name": "@hedgecode/foundation",
+  "keywords": [
+    "react",
+    "react-component",
+    "a11y",
+    "unstyled",
+    "foundation"
+  ],
   "version": "0.1.0",
   "description": "HedgeCode react core components",
   "repository": "https://github.com/Hedge-Code/Foundation.git",
@@ -61,6 +68,5 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint ."
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }
