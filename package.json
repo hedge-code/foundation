@@ -7,7 +7,7 @@
     "unstyled",
     "foundation"
   ],
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "HedgeCode react core components",
   "repository": "https://github.com/Hedge-Code/Foundation.git",
   "author": "Hedgecode - Artur Michalak <contact.hedgecode@gmail.com>",
