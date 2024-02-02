@@ -9,7 +9,7 @@
   ],
   "version": "0.1.6",
   "description": "HedgeCode react core components",
-  "repository": "https://github.com/Hedge-Code/Foundation.git",
+  "repository": "https://github.com/hedge-code/foundation.git",
   "author": "Hedgecode - Artur Michalak <contact.hedgecode@gmail.com>",
   "license": "MIT",
   "type": "module",
