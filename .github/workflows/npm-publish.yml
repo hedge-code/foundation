@@ -18,6 +18,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install -g lerna@8.1.2
       - run: npm ci
-      - run: npx lerna publish from-package
+      - run: npx lerna publish from-package --no-private --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
