@@ -1,22 +1,3 @@
-<h1 align=center>HedgeCode Foundation</h1>
+<h1 align=center>Hedge Code Foundation</h1>
 
-The Foundation includes components with minimal impact on a page style.
-
-There are several categories of components:
-
-Inputs:
-  - Input
-  - Select
-  - Autocomplete
-  - ...
-
-Modals:
-  - ...
-
-Data presentation:
-  - ...
-
-Utils:
-  - ...
-
-In the foundations we will avoid defining a specific style of components. The designer's freedom is the most important!
+[Hedge Code React Foundation](https://github.com/hedge-code/foundation/tree/main/packages/react-foundation) contains foundational React UI component libraries for shipping new features without giving a specific style to the application.

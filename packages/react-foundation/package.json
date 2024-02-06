@@ -1,0 +1,49 @@
+{
+  "name": "@hedgecode/foundation",
+  "version": "0.1.7",
+  "keywords": [
+    "react",
+    "react-component",
+    "a11y",
+    "unstyled",
+    "foundation"
+  ],
+  "description": "An open-source websites' React component library with low impact on the appearance.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hedge-code/foundation.git"
+  },
+  "author": "Hedge Code - Artur Michalak <contact.hedgecode@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hedge-code/foundation/issues"
+  },
+  "homepage": "https://github.com/hedge-code/foundation#readme",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/experimental-ct-react": "^1.41.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@swc/core": "^1.4.0",
+    "@types/node": "^20.11.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-swc3": "^0.11.0"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.mjs",
+    "test": "playwright test -c playwright-ct.config.ts",
+    "test-ct": "playwright test -c playwright-ct.config.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "peerDependencies": {
+    "classnames": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1"
+  }
+}
