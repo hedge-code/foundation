@@ -18,7 +18,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install -g lerna@8.1.2
       - run: npm run ci
-      - run: npm run build
+      - run: echo "::set-output name=dir::$(pwd)"
+      - run: npm run build -- -- --base-dir ${{ steps.base_dir.outputs.dir }}
       - run: cp package.json dist/
       - run: cp LICENSE.md dist/
       - run: npx run publish dist --access public
