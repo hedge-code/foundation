@@ -27,7 +27,7 @@
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "lerna run lint",
-    "publish": "lerna publish --no-private",
+    "publish": "lerna publish from-package --no-private",
     "lint:fix": "lerna run lint:fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
