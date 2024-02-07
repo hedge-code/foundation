@@ -1,5 +1,3 @@
-"use client";
-
 import type { FC, ChangeEvent } from "react";
 import { useState, useEffect } from "react";
 

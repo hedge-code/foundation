@@ -4,3 +4,4 @@ node_modules/
 /playwright-screens/
 /blob-report/
 /playwright/.cache/
+/dist
