@@ -1,6 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/swcrc",
-  "jsc": {},
+  "jsc": {
+    "baseUrl": "./src"
+  },
   "minify": true,
   "env": {
     "targets": "> 0.25%, not dead"
