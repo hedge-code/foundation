@@ -1,3 +1,4 @@
+import preserveDirectives from "rollup-preserve-directives";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import swc from "rollup-plugin-swc3";
@@ -18,6 +19,17 @@ export default {
       format: "cjs",
     },
   ],
-  plugins: [nodeResolve(), commonjs(), swc()],
+  plugins: [
+    preserveDirectives(),
+    nodeResolve(),
+    commonjs(),
+    swc({
+      jsc: {},
+      minify: true,
+      env: {
+        targets: "> 0.25%, not dead",
+      },
+    }),
+  ],
   external: ["react"],
 };

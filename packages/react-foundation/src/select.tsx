@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -103,7 +105,9 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
             { ...labelProps }
           )}
         >
-          <span className="transition-[font-size_margin] leading-7">{label}</span>
+          <span className="transition-[font-size_margin] leading-7">
+            {label}
+          </span>
         </label>
       </div>
     </span>
