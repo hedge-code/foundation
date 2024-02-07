@@ -35,7 +35,7 @@
   },
   "scripts": {
     "ci": "npm ci --include=dev",
-    "build": "rollup -c rollup.config.mjs",
+    "build": "rollup -c ./rollup.config.mjs",
     "test": "playwright test -c playwright-ct.config.ts",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "lint": "eslint .",
