@@ -23,13 +23,7 @@ export default {
     preserveDirectives(),
     nodeResolve(),
     commonjs(),
-    swc({
-      jsc: {},
-      minify: true,
-      env: {
-        targets: "> 0.25%, not dead",
-      },
-    }),
+    swc(),
   ],
   external: ["react"],
 };
