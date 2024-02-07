@@ -17,8 +17,10 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install -g lerna@8.1.2
-      - run: npm ci
+      - run: npm ci --include=dev
       - run: npm run build
-      - run: npx run publish
+      - run: cp package.json dist/
+      - run: cp LICENSE.md dist/
+      - run: npx run publish dist --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
