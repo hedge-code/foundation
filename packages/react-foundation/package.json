@@ -34,6 +34,7 @@
     "rollup-plugin-swc3": "^0.11.0"
   },
   "scripts": {
+    "ci": "npm ci",
     "build": "rollup -c rollup.config.mjs",
     "test": "playwright test -c playwright-ct.config.ts",
     "test-ct": "playwright test -c playwright-ct.config.ts",

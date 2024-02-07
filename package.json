@@ -24,6 +24,7 @@
     "vite": "^4.5.2"
   },
   "scripts": {
+    "ci": "lerna run ci",
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "lerna run lint",
