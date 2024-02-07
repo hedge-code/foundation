@@ -11,7 +11,7 @@
     "moduleResolution": "Node",
     "jsx": "react-jsx",
     "rootDir": "./src",
-    "baseUrl": "${GITHUB_WORKSPACE}/packages/react-foundation",
+    "baseUrl": "${{GITHUB_WORKSPACE}}/packages/react-foundation",
     "allowJs": false
   }
 }
