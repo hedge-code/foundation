@@ -29,6 +29,9 @@ export default [
     output: {
       file: "dist/bundle.d.ts",
       format: "es",
+      globals: {
+        classnames: 'classNames'
+      }
     },
     plugins: [dts()],
     external: ["classnames"]
