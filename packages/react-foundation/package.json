@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/hedge-code/foundation#readme",
   "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "devDependencies": {
     "@playwright/experimental-ct-react": "^1.41.2",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -45,9 +47,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "directory": "dist"
-  },
   "types": "dist/index.d.mts",
   "scripts": {
     "ci": "npm ci --include=dev",
