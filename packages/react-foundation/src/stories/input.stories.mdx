@@ -1,14 +1,17 @@
 import { Meta, Story, Canvas, Controls } from '@storybook/addon-docs';
 import { Input } from "..";
 
-export const Template = ({label, value, isError, disabled, type}) => {
-  return <Input {...{label, value, isError, disabled, type}}/>
+export const Template = ({isError, ...props}) => {
+  return <Input {...{isError, ...props}}/>
 }
 
 <Meta
   title="Foundation/Input"
   component={Input}
   argTypes={{
+    value: {
+      control: 'text'
+    },
     type: { control: "select", options: ["input", "textarea", 'email'] },
     label: {
       control: 'text'
@@ -19,7 +22,8 @@ export const Template = ({label, value, isError, disabled, type}) => {
   }} args={{
     label: 'Example',
     isError: false,
-    disabled: false
+    disabled: false,
+    value: ''
   }}
 />
 
@@ -28,22 +32,14 @@ export const Template = ({label, value, isError, disabled, type}) => {
 Let users insert text.
 
 <Canvas withToolbar>
-  <Story name='Basic'>
+  <Story name='No arguments'>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <Controls />
 
-### __Is a textarea__
-
-<Canvas>
-  <Story name="Textarea" args={{type: 'textarea'}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-### __Has an init value__
+#### __Has a value__
 
 <Canvas>
   <Story name="Value" args={{value: 'value'}}>
@@ -51,22 +47,28 @@ Let users insert text.
   </Story>
 </Canvas>
 
-### __Has an error__
+### __Is disabled__
+
+<Canvas>
+  <Story name="Disabled" args={{disabled: true}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+#### __Is a textarea type__
+
+<Canvas>
+  <Story name="Textarea" args={{type: 'textarea'}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+
+
+#### __Has an error__
 
 <Canvas>
   <Story name="Error" args={{isError: true}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="Error and value" args={{isError: true, value: 'op2'}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="Error textarea" args={{isError: true, type: 'textarea'}}>
     {Template.bind({})}
   </Story>
 </Canvas>

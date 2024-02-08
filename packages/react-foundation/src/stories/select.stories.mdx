@@ -50,30 +50,14 @@ export const TemplateMoreOptions = ({label, value, isLoading, isError, multiple,
 Let users select one option from a dropdown list.
 
 <Canvas withToolbar>
-  <Story name='Basic'>
+  <Story name='No arguments'>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <Controls />
 
-### __Allows to select multiple values__
-
-<Canvas>
-  <Story name="multiple" args={{multiple: true}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-### __Allows to select multiple with more values__
-
-<Canvas>
-  <Story name="multiple more options" args={{multiple: true}}>
-    {TemplateMoreOptions.bind({})}
-  </Story>
-</Canvas>
-
-### __Has an init value__
+### __Has a value__
 
 <Canvas>
   <Story name="Value" args={{value: 'op2'}}>
@@ -81,18 +65,34 @@ Let users select one option from a dropdown list.
   </Story>
 </Canvas>
 
-### __When isLoading__
+### __Is disabled__
 
 <Canvas>
-  <Story name="Loading" args={{isLoading: true}}>
+  <Story name="Disabled" args={{disabled: true}}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
-### __Is loading and has init value__
+### __Allows to select multiple values__
 
 <Canvas>
-  <Story name="Loading and value" args={{isLoading: true, value: 'op2'}}>
+  <Story name="Multiselect" args={{multiple: true}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### __Has also a scrollbar__
+
+<Canvas>
+  <Story name="Many options" args={{multiple: true}}>
+    {TemplateMoreOptions.bind({})}
+  </Story>
+</Canvas>
+
+### __Is loading__
+
+<Canvas>
+  <Story name="Loading" args={{isLoading: true}}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -101,24 +101,6 @@ Let users select one option from a dropdown list.
 
 <Canvas>
   <Story name="Error" args={{isError: true}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="Error and value" args={{isError: true, value: 'op2'}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="Loading and error" args={{isError: true, isLoading: true}}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="All" args={{isError: true, isLoading: true, value: 'op2'}}>
     {Template.bind({})}
   </Story>
 </Canvas>

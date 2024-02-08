@@ -32,7 +32,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 ) {
   const { id, type, label, labelProps, className, isError, onChange, ...rest } =
     props;
-  const { disabled } = rest;
+  const { disabled, value } = rest;
   const ref = useRef<HTMLInputElement>(null);
 
   useImperativeHandle(forwardRef, () => ref.current!, []);
@@ -42,7 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   useEffect(() => {
     setFilled((ref.current && ref.current.value != "") || isTextarea);
-  }, [type]);
+  }, [type, value]);
 
   const handleInput: ChangeEventHandler<HTMLInputElement> = useCallback((e) => {
     if (onChange) onChange(e);
@@ -53,27 +53,26 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   return (
     <span
+      data-error={isError || undefined}
+      data-disabled={disabled || undefined}
       className={classNames(
-        isError && "text-red-500",
-        disabled && "shadow-inner opacity-65",
-        "rounded px-2 py-1 relative inline-block has-[:focus]:text-blue-500 transition-colors duration-100",
+        "rounded px-2 py-1 relative inline-block has-[:focus]:text-blue-500 transition-colors duration-100 data-[disabled]:text-gray-500 data-[error]:text-red-500",
         className
       )}
     >
       {createElement(isTextarea ? "textarea" : "input", {
         onChange: handleInput,
         ref,
-        className: "outline-none peer overflow-auto w-full",
+        className: "outline-none peer overflow-auto w-full bg-transparent",
         type: !isTextarea && type,
         id: classNames(inputId, id),
         ...rest,
       })}
       <label
         htmlFor={inputId}
+        data-error={isError || undefined}
         className={classNames(
-          "border peer-focus-within:border-current peer-focus-within:before:border-current peer-focus-within:after:border-current peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded-l peer-focus-within:after:border-t after:flex-grow after:rounded-r pointer-events-none",
-          isError &&
-            "border-current before:border-t-current after:border-t-current",
+          "border peer-focus-within:border-current peer-focus-within:before:border-current peer-focus-within:after:border-current peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded-l peer-focus-within:after:border-t after:flex-grow after:rounded-r pointer-events-none data-[error]:border-current data-[error]:before:border-t-current data-[error]:after:border-t-current",
           filled &&
             "[&>span]:-mt-4 text-sm border-t-0 before:border-t after:border-t"
         )}

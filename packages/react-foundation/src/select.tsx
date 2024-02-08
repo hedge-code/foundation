@@ -6,6 +6,7 @@ import {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -45,31 +46,26 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
   useImperativeHandle(forwardRef, () => ref.current!, []);
 
   const [filled, setFilled] = useState<boolean>(false);
+  const isMultiValues = useMemo(() => multiple || size > 1, [multiple, size]);
 
   useEffect(() => {
-    if (multiple || isLoading || size > 1) setFilled(true);
-    else
-      setFilled(
-        (ref.current && ref.current.value != "") ||
-          multiple ||
-          size > 1 ||
-          isLoading
-      );
+    if (isMultiValues || isLoading) setFilled(true);
+    else setFilled(!!(ref.current && ref.current.value != ""));
   }, [isLoading, multiple, size]);
 
   const handleSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
     if (onChange) onChange(e);
-    setFilled(e.target.value != "" || multiple || size > 1 || isLoading);
+    setFilled(e.target.value != "" || isMultiValues || isLoading);
   };
 
   const selectId = `${uuidv4()}-select`;
 
   return (
     <span
+      data-error={isError || undefined}
+      data-disabled={isLoading || disabled || undefined}
       className={classNames(
-        isError && "text-red-500",
-        (isLoading || disabled) && "shadow-inner opacity-65",
-        "rounded px-2 py-1 relative inline-block has-[:focus]:text-blue-500 transition-colors duration-100",
+        "rounded px-2 py-1 relative inline-block has-[:focus]:text-blue-500 transition-colors duration-100 data-[disabled]:text-gray-500 data-[error]:text-red-500",
         className
       )}
     >
@@ -77,7 +73,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
         <select
           id={classNames(selectId, id)}
           className={classNames(
-            "outline-none peer overflow-auto w-full bg-transparent z-10 transition-opacity",
+            "outline-none peer overflow-auto w-full bg-transparent",
             isLoading && "pl-7"
           )}
           onChange={handleSelect}
@@ -85,17 +81,18 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
           ref={ref}
           {...props}
         >
-          {!required && size < 2 && !multiple && <option />}
+          {!required && !isMultiValues && <option />}
           {children}
         </select>
         <LoadingIcon
           className={classNames(
-            "w-7 absolute z-0 transition-opacity duration-500",
+            "w-7 absolute transition-opacity duration-500",
             !isLoading && "scale-x-0 opacity-0"
           )}
         />
         <label
           htmlFor={selectId}
+          data-error={isError || undefined}
           className={classNames(
             "border peer-focus-within:border-current peer-focus-within:before:border-current peer-focus-within:after:border-current peer-focus-within:[&>span]:-mt-4 border-t peer-focus-within:text-sm peer-focus-within:border-t-0 rounded left-0 top-0 bottom-0 w-full absolute flex before:min-w-2 peer-focus-within:before:border-t before:rounded-l peer-focus-within:after:border-t after:flex-grow after:rounded-r pointer-events-none",
             isError &&

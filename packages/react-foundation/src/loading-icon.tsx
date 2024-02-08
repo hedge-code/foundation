@@ -19,18 +19,17 @@ const Circle = memo(({ cx, begin, strokeWidth }: CircleProps) => (
 type LoadingIconProps = Omit<
   SVGProps<SVGSVGElement>,
   "fill" | " viewBox" | "xmlns"
-> & { strokeWidth?: CircleProps["strokeWidth"], size?: number };
+> & { strokeWidth?: CircleProps["strokeWidth"] };
 
 const LoadingIcon = ({
   className,
   strokeWidth,
-  size = 24,
   ...props
 }: LoadingIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
-    viewBox={`0 0 ${size} ${size}`}
+    viewBox="0 0 100 100"
     className={classNames("h-full", className)}
     {...props}
   >
