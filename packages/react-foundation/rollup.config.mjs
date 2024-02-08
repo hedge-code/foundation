@@ -2,6 +2,7 @@ import preserveDirectives from "rollup-preserve-directives";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import swc from "rollup-plugin-swc3";
+import dts from "rollup-plugin-dts";
 
 export default [
   {
@@ -21,6 +22,15 @@ export default [
       },
     ],
     plugins: [preserveDirectives(), nodeResolve(), commonjs(), swc()],
+    external: ["react"],
+  },
+  {
+    input: "src/index.ts",
+    output: {
+      file: "dist/bundle.d.ts",
+      format: "es",
+    },
+    plugins: [dts()],
     external: ["react"],
   },
 ];
