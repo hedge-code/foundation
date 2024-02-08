@@ -4,6 +4,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "types": ["node"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

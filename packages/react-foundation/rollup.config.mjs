@@ -22,7 +22,7 @@ export default [
       },
     ],
     plugins: [preserveDirectives(), nodeResolve(), commonjs(), swc()],
-    external: ["react", "classnames"],
+    external: ["react"],
   },
   {
     input: "src/index.ts",
@@ -31,6 +31,6 @@ export default [
       format: "es",
     },
     plugins: [dts()],
-    external: ["react", "classnames"],
+    external: ["classnames"]
   },
 ];
