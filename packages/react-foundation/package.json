@@ -1,6 +1,6 @@
 {
   "name": "@hedgecode/foundation",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "keywords": [
     "react",
     "react-component",
@@ -45,6 +45,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "directory": "dist"
+  },
   "types": "dist/index.d.mts",
   "scripts": {
     "ci": "npm ci --include=dev",
