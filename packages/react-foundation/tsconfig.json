@@ -11,6 +11,7 @@
     "moduleResolution": "Node",
     "jsx": "react-jsx",
     "rootDir": "./src",
-    "allowJs": false
+    "allowJs": false,
+    "declaration": true
   }
 }
