@@ -14,6 +14,7 @@ export default [
         name: "@hedgecode/foundation",
         globals: {
           react: "React",
+          classnames: "classNames"
         },
       },
       {
@@ -29,11 +30,7 @@ export default [
     output: {
       file: "dist/bundle.d.ts",
       format: "es",
-      globals: {
-        classNames: 'classnames'
-      }
     },
     plugins: [dts()],
-    external: ["react", "uuid", "classnames"]
   },
 ];
