@@ -30,10 +30,10 @@ export default [
       file: "dist/bundle.d.ts",
       format: "es",
       globals: {
-        classnames: 'classNames'
+        classNames: 'classnames'
       }
     },
     plugins: [dts()],
-    external: ["classnames"]
+    external: ["react", "uuid", "classnames"]
   },
 ];
