@@ -35,16 +35,16 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "rollup": "^4.9.6",
-    "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-swc3": "^0.11.0",
+    "rollup-plugin-ts": "^3.4.5",
     "rollup-preserve-directives": "^1.1.1",
     "typescript": "^5.3.3"
   },
   "files": [
     "dist"
   ],
-  "types": "dist/bundle.d.ts",
+  "types": "dist/index.d.mts",
   "scripts": {
     "ci": "npm ci --include=dev",
     "build": "rollup -c rollup.config.mjs",
