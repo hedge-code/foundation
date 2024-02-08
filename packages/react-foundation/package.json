@@ -26,7 +26,11 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@swc/core": "^1.4.0",
     "@types/node": "^20.11.16",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@types/uuid": "^9.0.8",
     "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -36,7 +40,9 @@
     "rollup-preserve-directives": "^1.1.1",
     "typescript": "^5.3.3"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/bundle.d.ts",
   "scripts": {
     "ci": "npm ci --include=dev",
