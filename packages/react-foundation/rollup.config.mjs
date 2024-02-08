@@ -1,3 +1,4 @@
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import preserveDirectives from "rollup-preserve-directives";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -9,21 +10,16 @@ export default [
     input: "src/index.ts",
     output: [
       {
-        file: "dist/bundle.umd.js",
-        format: "umd",
-        name: "@hedgecode/foundation",
-        globals: {
-          react: "React",
-          classnames: "classNames"
-        },
+        file: "dist/bundle.es.js",
+        format: 'esm'
       },
       {
         file: "dist/bundle.cjs.js",
         format: "cjs",
       },
     ],
-    plugins: [preserveDirectives(), nodeResolve(), commonjs(), swc()],
-    external: ["react"],
+    plugins: [peerDepsExternal(), preserveDirectives(), nodeResolve(), commonjs(), swc()],
+    external: ["react", "react-dom", "uuid", "classnames"],
   },
   {
     input: "src/index.ts",
