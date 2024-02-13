@@ -32,12 +32,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 ) {
   const { id, type, label, labelProps, className, isError, onChange, ...rest } =
     props;
-  const { disabled, value } = rest;
+  const { disabled, value, defaultValue } = rest;
   const ref = useRef<HTMLInputElement>(null);
 
   useImperativeHandle(forwardRef, () => ref.current!, []);
 
-  const [filled, setFilled] = useState<boolean>(false);
+  const [filled, setFilled] = useState<boolean>(!!(value || defaultValue));
   const isTextarea = useMemo(() => type === "textarea" || false, [type]);
 
   useEffect(() => {

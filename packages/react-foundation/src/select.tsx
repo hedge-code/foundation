@@ -41,12 +41,12 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
   forwardRef
 ) {
   const ref = useRef<HTMLSelectElement>(null);
-  const { required, multiple, size = 0 } = props;
+  const { required, multiple, value, defaultValue, size = 0 } = props;
 
   useImperativeHandle(forwardRef, () => ref.current!, []);
 
-  const [filled, setFilled] = useState<boolean>(false);
   const isMultiValues = useMemo(() => multiple || size > 1, [multiple, size]);
+  const [filled, setFilled] = useState<boolean>(!!(value || defaultValue) || isMultiValues);
 
   useEffect(() => {
     if (isMultiValues || isLoading) setFilled(true);
