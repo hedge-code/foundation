@@ -9,14 +9,14 @@ The package uses [tailwindcss](https://tailwindcss.com/) to set default theme.
 
 ## Getting Started
 
-The package requires tailwindcss, classnames and uuid packages.
+The package requires tailwindcss and classnames packages.
 
 [Tailwindcss installation](https://tailwindcss.com/docs/installation)
 
 Install the remaining packages in your project:
 
 ```bash
-npm i classnames uuid @hedgecode/foundation
+npm i classnames @hedgecode/foundation
 ```
 
 Add the library path to tailwindcss config file in content section.

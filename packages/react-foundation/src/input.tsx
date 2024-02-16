@@ -1,12 +1,12 @@
 "use client";
 
 import classNames from "classnames";
-import { v4 as uuidv4 } from "uuid";
 import {
   createElement,
   forwardRef,
   useCallback,
   useEffect,
+  useId,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -30,6 +30,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   props,
   forwardRef
 ) {
+  const inputId = useId();
   const { id, type, label, labelProps, className, isError, onChange, ...rest } =
     props;
   const { disabled, value, defaultValue } = rest;
@@ -48,8 +49,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     if (onChange) onChange(e);
     setFilled((ref.current && ref.current.value != "") || isTextarea);
   }, []);
-
-  const inputId = `${uuidv4()}-select`;
 
   return (
     <span

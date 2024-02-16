@@ -1,10 +1,10 @@
 "use client";
 
 import classNames from "classnames";
-import { v4 as uuidv4 } from "uuid";
 import {
   forwardRef,
   useEffect,
+  useId,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -40,6 +40,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
   },
   forwardRef
 ) {
+  const selectId = useId();
   const ref = useRef<HTMLSelectElement>(null);
   const { required, multiple, value, defaultValue, size = 0 } = props;
 
@@ -57,8 +58,6 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Input(
     if (onChange) onChange(e);
     setFilled(e.target.value != "" || isMultiValues || isLoading);
   };
-
-  const selectId = `${uuidv4()}-select`;
 
   return (
     <span
