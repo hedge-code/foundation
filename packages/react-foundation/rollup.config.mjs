@@ -26,6 +26,6 @@ export default [
       ts(),
       swc(),
     ],
-    external: ["react", "react-dom", "uuid", "classnames"],
+    external: ["react", "react-dom", "classnames"],
   },
 ];

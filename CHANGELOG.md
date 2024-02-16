@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.14-pre-alpha] - 2024-02-16
+
+- uuid package removed from dependencies
+- useId hook as a field identificator
+
 ## [0.1.13-pre-alpha] - 2024-02-13
 
 - a stable version of the input and select components
