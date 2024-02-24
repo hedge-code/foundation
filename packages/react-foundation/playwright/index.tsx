@@ -1,4 +1,4 @@
 // Import styles, initialize component theme here.
 // import '../src/common.css';
 
-import '../../../index.css'
+import './index.css'

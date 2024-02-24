@@ -1,35 +1,23 @@
 {
-  "name": "@hedgecode/monorepo",
-  "version": "0.1.0",
   "private": true,
-  "license": "MIT",
-  "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.12",
-    "@storybook/addon-interactions": "^7.6.12",
-    "@storybook/addon-links": "^7.6.12",
-    "@storybook/addon-onboarding": "1.0.11",
-    "@storybook/blocks": "^7.6.12",
-    "@storybook/react": "^7.6.12",
-    "@storybook/react-vite": "^7.6.12",
-    "@storybook/test": "^7.6.12",
-    "autoprefixer": "^10.4.17",
-    "classnames": "^2.5.1",
-    "lerna": "^8.1.2",
-    "prop-types": "15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "storybook": "^7.6.12",
-    "tailwindcss": "^3.4.1",
-    "vite": "^4.5.2"
-  },
   "scripts": {
-    "ci": "lerna run ci",
-    "build": "lerna run build",
-    "test": "lerna run test",
-    "lint": "lerna run lint",
-    "publish": "lerna publish from-package --yes --no-private",
-    "lint:fix": "lerna run lint:fix",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.10",
+    "@repo/typescript-config": "workspace:*",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
   }
 }

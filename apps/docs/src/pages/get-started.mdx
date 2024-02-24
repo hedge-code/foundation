@@ -1,0 +1,31 @@
+# Get Started
+
+Foundation is a free and open-source components library for ReactJS with Tailwindcss inspired by popular designs such as Material Design, with minimum impact on the page theme.
+
+## Installation
+
+The package requires [tailwindcss](https://tailwindcss.com/docs/installation) and classnames packages too.
+
+```sh npm2yarn copy
+npm i classnames @hedgecode/foundation
+```
+
+Once you install `@hedgecode/foundation` you need to put the library path in the content section of tailwindcss configuration file.
+
+```json copy
+"./node_modules/@hedgecode/foundation/**/*.{cjs,mjs}"
+```
+
+Full example of the file:
+
+```json filename="tailwindcss.config.ts" showLineNumbers {5}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx,md,mdx}",
+    "./node_modules/@hedgecode/foundation/**/*.{cjs,mjs}"
+  ],
+  plugins: [],
+}
+
+```
