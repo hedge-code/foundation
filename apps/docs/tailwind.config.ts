@@ -3,7 +3,8 @@ import sharedConfig from "@repo/tailwind-config";
 
 export default {
   content: [
-    "./pages/**/*.{js,md,mdx}",
+    "./pages/**/*.{md,mdx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
     "./node_modules/@hedgecode/foundation/**/*.{cjs,mjs}",
   ],
   presets: [sharedConfig],

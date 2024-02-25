@@ -1,0 +1,106 @@
+import { Callout, Tabs } from 'nextra/components'
+import { Input } from '@hedgecode/foundation'
+import Preview from '../../components/preview'
+
+# Input
+
+The input allow users to enter text into a UI. They typically appear in forms and dialogs.
+
+## Basic Input
+
+The `Input` is a form control integrated with a label with the ability to react to disabling or error.
+
+<Preview component={<Input label="Example" />}>
+    ```js
+    import { Input } from '@hedgecode/foundation'
+
+    export default function InputWrapper() {
+        return <Input label="Example" />
+    }
+    ```
+</Preview>
+
+<Callout type="info">An filled variant is planned to be added in the near future.</Callout>
+
+## Types
+
+The component supports all text fields types includes textarea.
+
+Some types are not supported in this component due to their unique character.
+
+All supported inputs are shown below:
+
+<div className='grid grid-cols-2 gap-4 place-items-center'>
+    <div className='flex flex-col gap-1'>text (default) <Input type='text' label="Example" /></div>
+    <div className='flex flex-col gap-1'>email <Input type='email' label="Example" /></div>
+    <div className='flex flex-col gap-1'>month <Input type='month' label="Example" /></div>
+    <div className='flex flex-col gap-1'>number <Input type='number' label="Example" /></div>
+    <div className='flex flex-col gap-1'>password <Input type='password' label="Example" /></div>
+    <div className='flex flex-col gap-1'>search <Input type='search' label="Example" /></div>
+    <div className='flex flex-col gap-1'>tel <Input type='tel' label="Example" /></div>
+    <div className='flex flex-col gap-1'>url <Input type='url' label="Example" /></div>
+    <div className='flex flex-col gap-1'>week <Input type='week' label="Example" /></div>
+    <div className='flex flex-col gap-1'>textarea <Input type='textarea' label="Example" /></div>
+    <div className='flex flex-col gap-1'>date <Input type='date' label="Example" /></div>
+    <div className='flex flex-col gap-1'>datetime-local <Input type='datetime-local' label="Example" /></div>
+</div>
+
+## other properties
+
+### error state
+
+The isError prop toggles the error state.
+
+<Preview component={<Input label="Example" isError />}>
+    ```js
+    import { Input } from '@hedgecode/foundation'
+
+    export default function InputWrapper() {
+        return <Input label="Example" isError />
+    }
+    ```
+</Preview>
+
+### icon
+
+<Preview component={<Input label="Example" icon='⭐' />}>
+    ```js
+    import { Input } from '@hedgecode/foundation'
+
+    export default function InputWrapper() {
+        return <Input label="Example" icon='⭐' />
+    }
+    ```
+</Preview>
+
+### disabled
+
+<Preview component={<Input label="Example" disabled />}>
+    ```js
+    import { Input } from '@hedgecode/foundation'
+
+    export default function InputWrapper() {
+        return <Input label="Example" disabled />
+    }
+    ```
+</Preview>
+
+## Customization
+
+### Textarea with resizing in the both directions:
+
+<Preview component={<div className='flex flex-col py-4 gap-4'><Input type='textarea' className='[&>textarea]:resize' label="Example" /></div>}>
+    ```js
+    import { Input } from '@hedgecode/foundation'
+
+    export default function InputsWrapper() {
+        return <div className='flex flex-col py-4 gap-4'>
+            <Input
+                className='[&>textarea]:resize'
+                label="Example"
+                type='textarea'
+            />
+        </div>
+    }
+    ```
+</Preview>

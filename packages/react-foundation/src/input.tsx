@@ -15,15 +15,28 @@ import {
 } from "react";
 import type {
   ChangeEventHandler,
-  HTMLInputTypeAttribute,
   InputHTMLAttributes,
   LabelHTMLAttributes,
+  ReactElement,
 } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: LabelHTMLAttributes<HTMLLabelElement>["children"];
   labelProps?: Omit<LabelHTMLAttributes<HTMLLabelElement>, "className">;
-  type?: HTMLInputTypeAttribute | "textarea";
+  type?:
+    | "text"
+    | "email"
+    | "month"
+    | "number"
+    | "password"
+    | "search"
+    | "tel"
+    | "url"
+    | "week"
+    | "date"
+    | "datetime-local"
+    | "textarea";
+  icon?: ReactElement;
   isError?: boolean;
 }
 
@@ -32,6 +45,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputId = useId();
     const {
       id,
+      icon,
       type,
       label,
       labelProps,
@@ -49,18 +63,26 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const [filled, setFilled] = useState<boolean>(
       Boolean(value || defaultValue)
     );
+
     const isTextarea = useMemo(() => type === "textarea" || false, [type]);
 
+    const isForcedOpen = useMemo(
+      () =>
+        (type && ["textarea", "date", "datetime-local"].includes(type)) || Boolean(icon) ||
+        false,
+      [icon, type]
+    );
+
     useEffect(() => {
-      setFilled((ref.current && ref.current.value != "") || isTextarea);
-    }, [isTextarea, type, value]);
+      setFilled((ref.current && ref.current.value != "") || isForcedOpen);
+    }, [isForcedOpen, type, value]);
 
     const handleInput: ChangeEventHandler<HTMLInputElement> = useCallback(
       (e) => {
         if (onChange) onChange(e);
-        setFilled((ref.current && ref.current.value != "") || isTextarea);
+        setFilled((ref.current && ref.current.value != "") || isForcedOpen);
       },
-      []
+      [isForcedOpen, onChange]
     );
 
     return (
@@ -72,10 +94,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         data-disabled={disabled || undefined}
         data-error={isError || undefined}
       >
+        <span className="w-7 absolute">{icon}</span>
         {createElement(isTextarea ? "textarea" : "input", {
           onChange: handleInput,
           ref,
-          className: "outline-none peer overflow-auto w-full bg-transparent ring-0",
+          className: classNames(
+            "outline-none peer overflow-auto w-full bg-transparent ring-0",
+            icon && "pl-7"
+          ),
           type: !isTextarea && type,
           id: classNames(inputId, id),
           ...rest,
