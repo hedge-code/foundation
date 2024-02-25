@@ -1,32 +1,28 @@
 "use client";
 
-import type { FC, ChangeEvent } from "react";
-import { useState, useEffect } from "react";
+import type { ChangeEvent, ReactNode } from "react";
+import { useState } from "react";
 
 interface AutocompleteMultiSelectProps {
-  suggestions: string[];
+  suggestions: Record<string, string>;
 }
 
-const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = (props) => {
+function AutocompleteMultiSelect (props: AutocompleteMultiSelectProps): ReactNode {
   const [inputValue, setInputValue] = useState<string>("");
-  const [suggestions, setSuggestions] = useState<string[]>(props.suggestions);
+  const [suggestions, setSuggestions] = useState<string[]>(Object.keys(props.suggestions));
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-  useEffect(() => {
-    setSuggestions(props.suggestions);
-  }, [inputValue]);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
   };
 
-  const handleSelectSuggestion = (selectedSuggestion: string) => {
+  const handleSelectSuggestion = (selectedSuggestion: string): void => {
     setInputValue("");
-    setSelectedItems([...selectedItems, selectedSuggestion]);
+    setSelectedItems([...selectedItems, props.suggestions[selectedSuggestion]]);
     setSuggestions([]);
   };
 
-  const handleRemoveItem = (removedItem: string) => {
+  const handleRemoveItem = (removedItem: string): void => {
     const updatedItems = selectedItems.filter((item) => item !== removedItem);
     setSelectedItems(updatedItems);
   };
@@ -34,24 +30,24 @@ const AutocompleteMultiSelect: FC<AutocompleteMultiSelectProps> = (props) => {
   return (
     <div>
       <div>
-        {selectedItems.map((item, index) => (
-          <span key={index} className="selected-item">
+        {selectedItems.map((item) => (
+          <span className="selected-item" key={item}>
             {item}
-            <button onClick={() => handleRemoveItem(item)}>&times;</button>
+            <button onClick={() => { handleRemoveItem(item); }} type="button">&times;</button>
           </span>
         ))}
       </div>
       <input
-        type="text"
-        value={inputValue}
         onChange={handleInputChange}
         placeholder="Type to search..."
+        type="text"
+        value={inputValue}
       />
       <ul>
-        {suggestions.map((suggestion, index) => (
-          <li key={index}>
-            <button onClick={() => handleSelectSuggestion(suggestion)}>
-              {suggestion}
+        {suggestions.map((suggestion) => (
+          <li key={suggestion}>
+            <button onClick={() => { handleSelectSuggestion(suggestion); }} type="button">
+              {props.suggestions[suggestion]}
             </button>
           </li>
         ))}

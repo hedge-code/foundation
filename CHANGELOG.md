@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.15-pre-alpha] - 2024-02-25
+
+- lerna changed to [turborepo](https://turbo.build/repo) system
+- workspaces support
+- npm upgraded to pnpm
+- documentation page based on [nextra documetation](https://nextra.site/docs/docs-theme/start)
+- storybook deletion (temporary?)
+- typescript and eslint configurations compatible with turbo
+
 ## [0.1.14-pre-alpha] - 2024-02-16
 
 - uuid package removed from dependencies

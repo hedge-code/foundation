@@ -1,0 +1,25 @@
+import { Input } from '@hedgecode/foundation'
+
+# Usage
+
+Learn the basics of working with this and many similar libraries.
+
+## Quickstart react
+
+After [installation](./get-started.mdx#installation), you can import any package compnoent and start using it.
+
+The component configuration is as close to native components as possible, so if you know the basics of react, you should know how to use the components too.
+
+<br />
+
+<Input label="Label" />
+
+```js copy showLineNumbers {2,5}
+import React from 'react' // React 17 allows to remove the default import of react
+import { Input } from "@hedgecode/foundation";
+
+export default function BlogCommentTextarea {
+    <Input type="textarea" label="Comment" classNames="font-serif" />
+}
+
+```

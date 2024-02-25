@@ -1,14 +1,13 @@
 {
   "name": "@hedgecode/foundation",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "keywords": [
     "react",
     "react-component",
     "a11y",
-    "unstyled",
     "foundation"
   ],
-  "description": "An open-source websites' React component library with low impact on the appearance.",
+  "description": "An open-source React's library of components with low impact on the appearance.",
   "repository": {
     "type": "git",
     "url": "https://github.com/hedge-code/foundation.git"
@@ -18,29 +17,31 @@
   "bugs": {
     "url": "https://github.com/hedge-code/foundation/issues"
   },
-  "homepage": "https://github.com/hedge-code/foundation#readme",
-  "type": "module",
+  "homepage": "https://foundation-docs.vercel.app",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "devDependencies": {
     "@playwright/experimental-ct-react": "^1.41.2",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@swc/core": "^1.4.0",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
-    "classnames": "^2.5.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.33",
+    "react-dom": "^18.2.0",
     "rollup": "^4.9.6",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-swc3": "^0.11.0",
     "rollup-plugin-ts": "^3.4.5",
     "rollup-preserve-directives": "^1.1.1",
+    "tailwindcss": "^3.4.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   },
   "files": [
@@ -48,16 +49,16 @@
   ],
   "types": "dist/index.d.mts",
   "scripts": {
-    "ci": "npm ci --include=dev",
+    "dev": "rollup -c rollup.config.mjs --watch",
     "build": "rollup -c rollup.config.mjs",
     "test": "playwright test -c playwright-ct.config.ts",
-    "test-ct": "playwright test -c playwright-ct.config.ts",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint src/",
+    "lint:fix": "eslint --fix src/",
+    "type-check": "tsc --noEmit"
   },
-  "dependencies": {
+  "peerDependencies": {
     "classnames": "^2.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "tailwind-merge": "^2.2.1"
   }
 }
